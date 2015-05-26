@@ -54,6 +54,9 @@ RUN           \
               mkdir -p /home/core/.config
 
 RUN           \
+              npm install --global grunt-cli pm2 mocha
+
+RUN           \
               echo "127.0.0.1 localhost" >> /etc/hosts
 
 ADD           bin/entrypoint.sh /usr/bin/entrypoint.sh
