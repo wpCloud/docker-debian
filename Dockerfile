@@ -25,8 +25,8 @@ RUN           \
 
 RUN           \
               apt-get install -y --force-yes openjdk-7-jre-headless && \
-              apt-get install -y --force-yes python-software-properties htop man unzip vim socat telnet git && \
-              apt-get install -y --force-yes libpcre3-dev libcurl3 libcurl3-dev lsyncd monit && \
+              apt-get install -y --force-yes python-software-properties htop man unzip vim socat telnet && \
+              apt-get install -y --force-yes libpcre3-dev libcurl3 libcurl3-dev lsyncd monit rsyslog && \
               apt-get clean all
 
 RUN           \
@@ -38,7 +38,19 @@ RUN           \
               make install && \
               cd ~/ && \
               rm -rf ~/node-v0.12.3*
-
+              
+RUN           \
+              curl https://codeload.github.com/git/git/zip/master -o ~/master.zip && \
+              cd ~/ && \
+              unzip master.zip && \
+              cd ~/git-master/ && \
+              make configure && \
+              ./configure --prefix=/usr && \
+              make && \
+              make install && \
+              cd ~/ && \
+              rm -rf master.zip git-master
+            
 RUN           \
               groupadd --gid=500 core && \
               useradd --create-home --uid=500 --gid=500 --home-dir=/home/core core && \
