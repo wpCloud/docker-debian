@@ -66,6 +66,10 @@ RUN           \
               mkdir -p /home/core/.config
 
 RUN           \
+              ssh-keyscan -t rsa github.com > /home/core/.ssh/known_hosts && \
+              ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
+
+RUN           \
               npm install --global grunt-cli pm2 mocha
 
 RUN           \
