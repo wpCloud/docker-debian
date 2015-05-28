@@ -53,7 +53,7 @@ RUN           \
             
 RUN           \
               groupadd --gid=500 core && \
-              useradd --create-home --uid=500 --gid=500 --home-dir=/home/core core && \
+              useradd --create-home --shell=/bin/bash --uid=500 --gid=500 --home-dir=/home/core core && \
               echo core:mmoqmwnpipmrkho | /usr/sbin/chpasswd && \
               usermod -a -G sudo core && \
               yes | cp /root/.bashrc /home/core && \
