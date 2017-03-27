@@ -30,27 +30,12 @@ RUN           \
               apt-get clean all
 
 RUN           \
-              curl --silent http://nodejs.org/dist/v0.12.3/node-v0.12.3.tar.gz --output ~/node-v0.12.3.tar.gz && \
-              tar -xzvf ~/node-v0.12.3.tar.gz -C ~/ && \
-              cd ~/node-v0.12.3 && \
-              ./configure && \
-              make && \
-              make install && \
-              cd ~/ && \
-              rm -rf ~/node-v0.12.3*
-              
+              curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
+              sudo apt-get install -y nodejs
+
 RUN           \
-              curl https://codeload.github.com/git/git/zip/master -o ~/master.zip && \
-              cd ~/ && \
-              unzip master.zip && \
-              cd ~/git-master/ && \
-              make configure && \
-              ./configure --prefix=/usr && \
-              make && \
-              make install && \
-              cd ~/ && \
-              rm -rf master.zip git-master
-            
+              apt-get install -y git-core
+
 RUN           \
               groupadd --gid=500 core && \
               useradd --create-home --shell=/bin/bash --uid=500 --gid=500 --home-dir=/home/core core && \
