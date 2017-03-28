@@ -58,8 +58,7 @@ RUN           \
               npm install --global grunt-cli pm2 mocha
 
 RUN           \
-              ln -sf /usr/bin/node /usr/local/bin/node && \
-              ln -sf /usr/lib/node_modules /usr/local/lib/node_modules
+              ln -sf /usr/bin/node /usr/local/bin/node 
 
 RUN           \
               echo "127.0.0.1 localhost" >> /etc/hosts
