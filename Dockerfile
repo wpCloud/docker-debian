@@ -55,10 +55,13 @@ RUN           \
               ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
 
 RUN           \
-              npm install --global grunt-cli pm2 mocha
+              npm install --global grunt-cli pm2 mocha supervisor
 
 RUN           \
               ln -sf /usr/bin/node /usr/local/bin/node 
+
+RUN           \
+              chown -R core:core /usr/lib/node_modules
 
 RUN           \
               echo "127.0.0.1 localhost" >> /etc/hosts
